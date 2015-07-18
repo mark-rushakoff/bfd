@@ -1,0 +1,34 @@
+@import '../util/_color';
+
+.memory {
+  width: 75%;
+  min-height: 10em;
+  padding: 0 8em;
+  margin: 1em auto 0;
+  border: 2px solid $stronger-brown;
+}
+
+.cell {
+  display: inline-block;
+  position: relative;
+
+  border: 1px dashed $softer-brown;
+  margin: 0.1em 0.1em 0 0;
+  width: 5em;
+  height: 5em;
+}
+
+.cell--value {
+  width: 50%;
+  height: 50%;
+  overflow: auto;
+  margin: auto;
+  position: absolute;
+  top: 0; left: 0; bottom: 0; right: 0;
+
+  font-size: large;
+  font-weight: bold;
+  font-family: monospace;
+  color: lighten($softer-brown, 20);
+  text-align: center;
+}
