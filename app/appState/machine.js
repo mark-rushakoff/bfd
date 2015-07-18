@@ -13,7 +13,7 @@ export default function machine() {
           rawCode: ['rawCode'],
         },
         get(value, deps) {
-          const stripped = deps.rawCode.replace(/[^-+><\.]/, '');
+          const stripped = deps.rawCode.replace(/[^-+><\.]/g, '');
           const charToInstruction = {
             '-': bf.DEC_MEM,
             '+': bf.INC_MEM,

@@ -18,11 +18,11 @@ describe('appState.machine', () => {
 
   describe('after updating the raw code', () => {
     beforeEach(() => {
-      appState.actions.setRawCode('>+.');
+      appState.actions.setRawCode('>ignored+.');
     });
 
     it('is reflected in the getters', () => {
-      expect(appState.getters.rawCode()).toEqual('>+.');
+      expect(appState.getters.rawCode()).toEqual('>ignored+.');
       expect(appState.getters.instructions()).toEqual([bf.INC_PTR, bf.INC_MEM, bf.PRINT]);
     });
   });
