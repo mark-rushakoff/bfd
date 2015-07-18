@@ -1,15 +1,10 @@
-import Nuclear from 'nuclear-js';
 import React from 'react';
 
 import App from './components/App';
-import initializeBfModule from './modules/bf';
+import makeAppState from './appState';
+import machine from './appState/machine';
 
-const reactor = new Nuclear.Reactor({
-  debug: true,
-});
-const bf = initializeBfModule(reactor);
-const actions = {
-  bf: bf.actions,
-};
+const appState = makeAppState();
+appState.loadPlugin(machine());
 
-React.render(<App reactor={reactor} actions={actions}/>, document.body);
+React.render(<App appState={appState}/>, document.body);

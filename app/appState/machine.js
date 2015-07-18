@@ -28,10 +28,12 @@ export default function machine() {
     },
   });
 
+  const updateCallbacks = [];
   return {
     actions: {
       setRawCode(code) {
         store = store.set('rawCode', code);
+        updateCallbacks.forEach(cb => cb());
       },
     },
     getters: {
@@ -44,6 +46,14 @@ export default function machine() {
       instructions() {
         return store.instructions;
       },
+    },
+    onUpdate(callback) {
+      updateCallbacks.push(callback);
+
+      return function unsubscribe() {
+        const idx = updateCallbacks.indexOf(callback);
+        updateCallbacks.splice(idx, 1);
+      };
     },
   };
 }

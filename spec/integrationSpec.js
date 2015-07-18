@@ -19,14 +19,14 @@ describe('the entire app', () => {
     expect($codeInput()).toExist();
   });
 
-  xdescribe('changing the code input', () => {
+  describe('changing the code input', () => {
     beforeEach(() => {
       Simulate.change($codeInput()[0], {target: {value: '>+.'}});
     });
 
     it('renders instruction nodes into the instructions div', () => {
       const $instruction = $instructions().find('.instruction');
-      expect($instruction.eq(0)).toHaveClass('inc-pointer');
+      expect($instruction.eq(0)).toHaveClass('inc-ptr');
       expect($instruction.eq(1)).toHaveClass('inc-mem');
       expect($instruction.eq(2)).toHaveClass('print');
     });
