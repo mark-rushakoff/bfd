@@ -1,6 +1,7 @@
 import Store from 'immutable-store';
 
 import bf from '../bf';
+import makeNotifier from '../notifier';
 
 export default function machine() {
   let store = Store({
@@ -28,12 +29,12 @@ export default function machine() {
     },
   });
 
-  const updateCallbacks = [];
+  const storeChangedNotifier = makeNotifier();
   return {
     actions: {
       setRawCode(code) {
         store = store.set('rawCode', code);
-        updateCallbacks.forEach(cb => cb());
+        storeChangedNotifier.notify();
       },
     },
     getters: {
@@ -47,13 +48,6 @@ export default function machine() {
         return store.instructions;
       },
     },
-    onUpdate(callback) {
-      updateCallbacks.push(callback);
-
-      return function unsubscribe() {
-        const idx = updateCallbacks.indexOf(callback);
-        updateCallbacks.splice(idx, 1);
-      };
-    },
+    onUpdate: storeChangedNotifier.observe,
   };
 }

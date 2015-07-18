@@ -1,5 +1,7 @@
+import makeNotifier from '../notifier';
+
 export default function makeAppState() {
-  const appStateListeners = [];
+  const appStateChangedNotifier = makeNotifier();
   const state = {
     actions: {},
     getters: {},
@@ -8,17 +10,10 @@ export default function makeAppState() {
       Object.assign(state.getters, getters);
 
       onUpdate(() => {
-        appStateListeners.forEach(cb => cb());
+        appStateChangedNotifier.notify();
       });
     },
-    onAppStateUpdate(callback) {
-      appStateListeners.push(callback);
-
-      return function unsubscribe() {
-        const idx = appStateListeners.indexOf(callback);
-        appStateListeners.splice(idx, 1);
-      };
-    },
+    onAppStateUpdate: appStateChangedNotifier.observe,
   };
 
   return state;
