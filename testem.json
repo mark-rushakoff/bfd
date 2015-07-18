@@ -1,0 +1,15 @@
+{
+    "framework": "jasmine2",
+    "src_files": [
+      "built_specs/all_specs.js"
+    ],
+    "serve_files": [
+      "bower_components/jquery/dist/jquery.min.js",
+      "bower_components/jasmine-jquery/lib/jasmine-jquery.js",
+      "bower_components/jasmine-given/dist/jasmine-given.js",
+      "bower_components/sinon/index.js",
+      "built_specs/all_specs.js"
+    ],
+    "launch_in_ci": ["phantomjs"],
+    "launch_in_dev": ["phantomjs"]
+}
