@@ -1,0 +1,10 @@
+@import '../util/_color';
+
+body {
+  background-color: $bland-yellow;
+}
+
+textarea {
+  background-color: darken($bland-yellow, 10);
+  font-family: monospace;
+}

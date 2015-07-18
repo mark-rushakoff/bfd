@@ -1,0 +1,50 @@
+@import '../util/_color';
+
+.instructions {
+  width: 75%;
+  min-height: 10em;
+  padding: 0 8em;
+  margin: 0 auto;
+
+  border: 2px solid $stronger-brown;
+}
+
+.instruction {
+  $instruction-height: 6em;
+
+  display: inline-block;
+  position: relative;
+
+  border: 1px dashed $softer-brown;
+  margin: 0.1em 0.1em 0 0;
+  width: 4em;
+  height: $instruction-height;
+
+  &:before {
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+
+    width: 50%;
+    height: 50%;
+    overflow: auto;
+    margin: auto;
+    position: absolute;
+    top: 0; left: 0; bottom: 0; right: 0;
+
+    font-size: xx-large;
+    font-weight: bold;
+    font-family: monospace;
+    color: lighten($softer-brown, 20);
+    text-align: center;
+  }
+
+  &.inc-mem:before { content: "+"; }
+  &.dec-mem:before { content: "-"; }
+  &.inc-ptr:before { content: ">"; }
+  &.dec-ptr:before { content: "<"; }
+  &.print:before   { content: '.'; }
+}

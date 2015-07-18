@@ -3,6 +3,8 @@ import React from 'react';
 
 import makeBaseComponent from './baseComponent';
 
+import '../../style/component/instructions.scss';
+
 export default makeBaseComponent({
   name: 'Instructions',
   getterNames: ['instructions'],
