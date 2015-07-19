@@ -8,6 +8,7 @@ describe('Instructions component', () => {
   beforeEach(() => {
     appState = stubAppState();
     appState.stubGetter('instructions').and.returnValue([bf.INC_MEM, bf.DEC_MEM]);
+    appState.stubGetter('instructionPointer').and.returnValue(1);
 
     node = renderForTest(Instructions, {}, appState);
   });
@@ -16,6 +17,6 @@ describe('Instructions component', () => {
     const $instructions = $(node).find('.instruction');
     expect($instructions).toHaveLength(2);
     expect($instructions.eq(0)).toHaveClass('inc-mem');
-    expect($instructions.eq(1)).toHaveClass('dec-mem');
+    expect($instructions.eq(1)).toHaveClass('dec-mem instruction--active');
   });
 });

@@ -48,3 +48,7 @@
   &.dec-ptr:before { content: "<"; }
   &.print:before   { content: '.'; }
 }
+
+.instruction--active {
+  border: 1px solid $softer-brown;
+}

@@ -18,6 +18,10 @@
   height: 5em;
 }
 
+.cell--active {
+  border: 1px solid $softer-brown;
+}
+
 .cell--value {
   width: 50%;
   height: 50%;
