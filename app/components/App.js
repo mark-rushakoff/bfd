@@ -4,6 +4,7 @@ import AppStateWrapper from './AppStateWrapper';
 import CodeInput from './CodeInput';
 import Instructions from './Instructions';
 import Memory from './Memory';
+import StepButton from './StepButton';
 
 export default React.createClass({
   displayName: 'App',
@@ -16,6 +17,7 @@ export default React.createClass({
         {
           () => <div>
             <CodeInput/>
+            <StepButton/>
             <Instructions/>
             <Memory/>
           </div>

@@ -30,10 +30,22 @@ describe('the entire app', () => {
       expect($instruction.eq(1)).toHaveClass('inc-mem');
       expect($instruction.eq(2)).toHaveClass('print');
 
-      const $cell = $memory().find('.cell');
-      expect($cell).toHaveLength(1);
-      expect($cell.eq(0)).toHaveClass('cell--active');
-      expect($cell.eq(0)).toHaveText(/0x00/);
+      expect($cell()).toHaveLength(1);
+      expect($cell().eq(0)).toHaveClass('cell--active');
+      expect($cell().eq(0)).toHaveText(/0x00/);
+    });
+
+    describe('stepping', () => {
+      beforeEach(() => {
+        for (let i = 0; i < 3; i++) {
+          Simulate.click($stepButton()[0]);
+        }
+      });
+
+      it('updates the memory', () => {
+        expect($cell().eq(1)).toHaveClass('cell--active');
+        expect($cell().eq(1)).toHaveText(/0x01/);
+      });
     });
   });
 
@@ -47,5 +59,13 @@ describe('the entire app', () => {
 
   function $memory() {
     return $(appNode).find('.memory');
+  }
+
+  function $cell() {
+    return $memory().find('.cell');
+  }
+
+  function $stepButton() {
+    return $(appNode).find('button.step');
   }
 });
